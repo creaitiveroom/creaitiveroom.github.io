@@ -46,14 +46,12 @@ main{display:grid;grid-template-columns:1fr;gap:40px;align-items:start;flex:1}
 .c{font-family:var(--display);font-variation-settings:'wdth' 62;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.86;margin:0;font-size:clamp(56px,15vw,150px);text-wrap:balance}
 .s{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.02;margin:.14em 0 0;font-size:clamp(40px,10vw,104px);letter-spacing:-.02em;text-wrap:balance}
 .intro{max-width:36ch;margin:22px 0 0;font-size:17px}
-.intro span{color:var(--nevoa)}
 
 form{display:flex;flex-direction:column;gap:28px;min-width:0}
 .field{display:flex;flex-direction:column;gap:8px}
 label{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 input,textarea{width:100%;background:transparent;border:0;border-bottom:2px solid var(--papel);color:var(--papel);font:400 19px/1.45 var(--texto);padding:10px 0 12px;border-radius:0;-webkit-appearance:none;appearance:none}
 textarea{resize:vertical;min-height:132px}
-input::placeholder,textarea::placeholder{color:var(--nevoa);opacity:1}
 input:focus,textarea:focus{outline:none;border-bottom-color:var(--sinal)}
 .meta{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--nevoa);font-variant-numeric:tabular-nums}
 .err{margin:0;color:var(--papel);background:rgba(255,90,31,.22);border-left:3px solid var(--sinal);padding:8px 12px;font-size:15px}
@@ -114,16 +112,16 @@ html:lang(es) .c{line-height:1}
     <section class="hero">
       <h1 class="c" data-i18n="h1">Tem uma ideia?</h1>
       <p class="s" data-i18n="h2">A gente transforma em vídeo.</p>
-      <p class="intro" data-i18n-html="intro">Vídeos promocionais com cara de cinema, feitos com inteligência artificial. <span>Conte sua ideia em poucas palavras e a gente responde pelo WhatsApp.</span></p>
+      <p class="intro" data-i18n="intro">Vídeos promocionais com cara de cinema, feitos com inteligência artificial.</p>
     </section>
     <form id="orcamento" novalidate>
       <div class="field">
         <label for="nome" data-i18n="nameLabel">Seu nome</label>
-        <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" maxlength="80" data-i18n-ph="namePh" placeholder="Como podemos te chamar?">
+        <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" maxlength="80">
       </div>
       <div class="field">
         <label for="ideia" data-i18n="ideaLabel">Sua ideia</label>
-        <textarea id="ideia" name="ideia" maxlength="600" autocapitalize="sentences" enterkeyhint="done" data-i18n-ph="ideaPh" placeholder="Ex.: um vídeo de 30 segundos para o lançamento da nova coleção, com clima de desfile."></textarea>
+        <textarea id="ideia" name="ideia" maxlength="600" autocapitalize="sentences" enterkeyhint="done"></textarea>
         <div class="meta"><span data-i18n="hint">Escreva do seu jeito, sem roteiro.</span><span id="contador">0/600</span></div>
       </div>
       <p class="err" id="erro" role="alert" hidden></p>
@@ -148,9 +146,9 @@ const T = {
   pt: {
     htmlLang: "pt-BR", title: "Creaitive Room · Orçamento", tag: "Orçamento",
     h1: "Tem uma ideia?", h2: "A gente transforma em vídeo.",
-    intro: "Vídeos promocionais com cara de cinema, feitos com inteligência artificial. <span>Conte sua ideia em poucas palavras e a gente responde pelo WhatsApp.</span>",
-    nameLabel: "Seu nome", namePh: "Como podemos te chamar?",
-    ideaLabel: "Sua ideia", ideaPh: "Ex.: um vídeo de 30 segundos para o lançamento da nova coleção, com clima de desfile.",
+    intro: "Vídeos promocionais com cara de cinema, feitos com inteligência artificial.",
+    nameLabel: "Seu nome",
+    ideaLabel: "Sua ideia",
     hint: "Escreva do seu jeito, sem roteiro.",
     soon: "Em breve: este botão abre uma conversa direto no nosso WhatsApp.",
     tagline: "Vídeos promocionais cinematográficos com IA",
@@ -161,9 +159,9 @@ const T = {
   es: {
     htmlLang: "es", title: "Creaitive Room · Presupuesto", tag: "Presupuesto",
     h1: "¿Tienes una idea?", h2: "Nosotros la convertimos en video.",
-    intro: "Videos promocionales con aspecto de cine, hechos con inteligencia artificial. <span>Cuéntanos tu idea en pocas palabras y te respondemos por WhatsApp.</span>",
-    nameLabel: "Tu nombre", namePh: "¿Cómo te llamamos?",
-    ideaLabel: "Tu idea", ideaPh: "Ej.: un video de 30 segundos para el lanzamiento de la nueva colección, con aire de desfile.",
+    intro: "Videos promocionales con aspecto de cine, hechos con inteligencia artificial.",
+    nameLabel: "Tu nombre",
+    ideaLabel: "Tu idea",
     hint: "Escríbela a tu manera, sin guion.",
     soon: "Muy pronto: este botón abrirá una conversación directa en nuestro WhatsApp.",
     tagline: "Videos promocionales cinematográficos con IA",
@@ -174,9 +172,9 @@ const T = {
   en: {
     htmlLang: "en", title: "Creaitive Room · Get a quote", tag: "Get a quote",
     h1: "Got an idea?", h2: "We turn it into video.",
-    intro: "Promotional videos with a cinematic look, made with artificial intelligence. <span>Tell us your idea in a few words and we'll reply on WhatsApp.</span>",
-    nameLabel: "Your name", namePh: "What should we call you?",
-    ideaLabel: "Your idea", ideaPh: "E.g. a 30-second video for a new collection launch, with a runway feel.",
+    intro: "Promotional videos with a cinematic look, made with artificial intelligence.",
+    nameLabel: "Your name",
+    ideaLabel: "Your idea",
     hint: "Write it your way, no script needed.",
     soon: "Coming soon: this button opens a chat straight to our WhatsApp.",
     tagline: "Cinematic promotional videos made with AI",
@@ -213,8 +211,6 @@ function aplicar(l){
   document.documentElement.lang = t.htmlLang;
   document.title = t.title;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t[el.dataset.i18n]; });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t[el.dataset.i18nHtml]; });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t[el.dataset.i18nPh]; });
   flags.forEach(f => f.setAttribute('aria-pressed', String(f.dataset.lang === l)));
   erro.hidden = true;
   guardar('cr_lang', l);
