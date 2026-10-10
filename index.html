@@ -60,7 +60,6 @@ button.send{display:inline-flex;align-items:center;justify-content:center;gap:12
 button.send .dot{width:12px;height:12px;border-radius:50%;background:var(--sinal);display:inline-block;flex:none}
 button.send:focus-visible{outline:3px solid var(--sinal);outline-offset:4px}
 button.send:disabled{opacity:.5;cursor:not-allowed}
-.soon{font-size:15px;color:var(--nevoa);margin:0}
 
 footer{display:flex;flex-direction:column;align-items:flex-start;gap:14px;border-top:2px solid var(--papel);padding-top:16px}
 .mark{font-family:var(--display);font-variation-settings:'wdth' 62;font-weight:900;font-size:32px;line-height:.82;letter-spacing:-.02em;margin:0}
@@ -127,7 +126,6 @@ html:lang(es) .c{line-height:1}
       <p class="err" id="erro" role="alert" hidden></p>
       <div class="actions">
         <button type="submit" class="send" id="enviar">Enter the room<span class="dot" aria-hidden="true"></span></button>
-        <p class="soon" id="aviso" data-i18n="soon">Em breve: este botão abre uma conversa direto no nosso WhatsApp.</p>
       </div>
     </form>
   </main>
@@ -138,8 +136,8 @@ html:lang(es) .c{line-height:1}
 </div>
 <script>
 // ===== CONFIGURAÇÃO: só mexa nestas duas linhas =====
-const WHATSAPP = "11994269144";      // número com país e DDD, só dígitos. Ex.: "5511999999999"
-const BOTAO_ATIVO = true; // troque para true quando o WhatsApp da marca estiver pronto
+const WHATSAPP = "5511994269144";      // número com país e DDD, só dígitos. Ex.: "5511999999999"
+const BOTAO_ATIVO = true;  // false desativa o botão
 // =====================================================
 
 const T = {
@@ -150,7 +148,6 @@ const T = {
     nameLabel: "Seu nome",
     ideaLabel: "Sua ideia",
     hint: "Escreva do seu jeito, sem roteiro.",
-    soon: "Em breve: este botão abre uma conversa direto no nosso WhatsApp.",
     tagline: "Vídeos promocionais cinematográficos com IA",
     errName: "Escreva seu nome para a gente saber com quem está falando.",
     errIdea: "Conte sua ideia, mesmo que em uma frase.",
@@ -163,7 +160,6 @@ const T = {
     nameLabel: "Tu nombre",
     ideaLabel: "Tu idea",
     hint: "Escríbela a tu manera, sin guion.",
-    soon: "Muy pronto: este botón abrirá una conversación directa en nuestro WhatsApp.",
     tagline: "Videos promocionales cinematográficos con IA",
     errName: "Escribe tu nombre para saber con quién hablamos.",
     errIdea: "Cuéntanos tu idea, aunque sea en una frase.",
@@ -176,7 +172,6 @@ const T = {
     nameLabel: "Your name",
     ideaLabel: "Your idea",
     hint: "Write it your way, no script needed.",
-    soon: "Coming soon: this button opens a chat straight to our WhatsApp.",
     tagline: "Cinematic promotional videos made with AI",
     errName: "Add your name so we know who we're talking to.",
     errIdea: "Tell us your idea, even in one sentence.",
@@ -189,7 +184,6 @@ const nome = document.getElementById('nome');
 const ideia = document.getElementById('ideia');
 const erro = document.getElementById('erro');
 const botao = document.getElementById('enviar');
-const aviso = document.getElementById('aviso');
 const contador = document.getElementById('contador');
 const flags = document.querySelectorAll('.flag');
 let lang = 'pt';
@@ -220,7 +214,6 @@ flags.forEach(f => f.addEventListener('click', () => aplicar(f.dataset.lang)));
 
 const ativo = BOTAO_ATIVO && /^\d{12,13}$/.test(WHATSAPP);
 botao.disabled = !ativo;
-aviso.hidden = ativo;
 
 ideia.addEventListener('input', () => { contador.textContent = ideia.value.length + '/600'; });
 nome.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); ideia.focus(); } });
